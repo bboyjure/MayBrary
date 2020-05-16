@@ -5,10 +5,12 @@ if(process.env.NODE_ENV !== "production"){
 const express = require("express")
 const app = express()
 const expressLayouts = require("express-ejs-layouts")
+const bodyParser = require("body-parser")
 const PORT = process.env.PORT || 3000
 
 //Importing Routes
 const indexRouter = require("./routes/index")
+const authorRouter = require("./routes/author")
 
 
 //Express Layouts and view engines and static folders
@@ -17,6 +19,7 @@ app.set("views", __dirname + "/views")
 app.set("layout", "layouts/layout")
 app.use(expressLayouts)
 app.use(express.static("public"))
+app.use(bodyParser.urlencoded({ limit: "10mb", extended: false}))
 
 
 //Integrating MongoDB
@@ -30,6 +33,7 @@ db.once("open", () => console.log("Connected to mongoose"))
 
 //Using Routes
 app.use("/", indexRouter)
+app.use("/authors", authorRouter)
 
 
 

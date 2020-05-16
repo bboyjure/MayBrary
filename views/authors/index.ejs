@@ -1,0 +1,26 @@
+<div class="container mt-5">
+    <h2 class="text-center">Search for Authors</h2>
+    <form action="/authors" method="GET">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" name="name" placeholder="Enter a name" value="<%= searchOptions.name %>">
+        </div>
+        <div class="text-right">
+            <button type="submit" class="btn btn-primary">Search</button>
+
+        </div>
+    </form>
+    <div style="display: flex; flex-wrap: wrap;">
+        <% authors.forEach(author => { %>
+        <div class="card m-2" style=" width: 260px">
+            <div class="card-body">
+                <h5 class="card-title"><%= author.name %></h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+        <% }) %>
+    </div>
+
+</div>
