@@ -11,6 +11,7 @@ const PORT = process.env.PORT || 3000
 //Importing Routes
 const indexRouter = require("./routes/index")
 const authorRouter = require("./routes/author")
+const bookRouter = require("./routes/books")
 
 
 //Express Layouts and view engines and static folders
@@ -34,6 +35,7 @@ db.once("open", () => console.log("Connected to mongoose"))
 //Using Routes
 app.use("/", indexRouter)
 app.use("/authors", authorRouter)
+app.use("/books", bookRouter)
 
 
 
